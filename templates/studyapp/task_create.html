@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block header %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">StudyLife</h1>
+        <p class="lead">学習内容の登録・削除</p>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <div class="forms">
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <div class="field">
+                {{ form.task_name.label_tag }}
+                {{ form.task_name }}
+                {{ form.task_name.errors }}
+            </div>
+
+            <input type="submit" value="登録">
+            <input type="submit" value="削除">
+        </form>
+        <p><a href="{% url 'studyapp:list' %}" class="btn btn-info" role="button" aria-disabled="true">戻る</a></p>
+    </div>
+</div>
+{% endblock content %}

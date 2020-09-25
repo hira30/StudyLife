@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+
+{% block header %}
+<div class="jumbotron jumbotron-fluid　jumbotron-extend">
+    <div class="container">
+        <h1 class="display-4">マイページ</h1>
+        <p class="lead"></p>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+
+    <div style="margin-right:100px ;">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>ユーザー名</th>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <th>メールアドレス</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th>姓</th>
+                    <td>{{ user.last_name }}</td>
+                </tr>
+                <tr>
+                    <th>名</th>
+                    <td>{{ user.first_name }}</td>
+                </tr>
+                <tr>
+                    <th>パスワード</th>
+                    <td> <a href="{% url 'main:password_change' %}" class="btn btn-primary ">変更</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <a href="{% url 'main:profile_change' user.pk %}" class="btn btn-primary ">変更</a> -->
+    </div>
+<!-- <p><a href= "{% url 'main:index' %}">トップページ</a></p> -->
+</div>
+{% endblock content %}

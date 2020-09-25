@@ -1,0 +1,86 @@
+body {
+    padding-top: 3.8rem;
+}
+
+* {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.jumbotron-extend {
+    position: relative;
+    height: 200px;
+    /* min-height: 300px; */
+}
+
+.forms {
+    width: 40%;
+    margin-right: auto;
+    margin-left : auto;
+}
+
+.contact {
+    width: 60%;
+    margin-right: auto;
+    margin-left : auto;
+}
+
+.crud {
+    width: 60%;
+    margin-right: auto;
+    margin-left : auto;
+}
+
+footer {
+    text-align: center;
+}
+
+
+/* フォーム用 */
+/* エラーの場合に作成されるul要素は、errorlistというクラス名がついている */
+.errorlist {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    color: red;
+}
+
+div.field {
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+div.field>span.helptext {
+    font-size: 14px;
+    color: #999;
+}
+
+div.field>label {
+    display: block;
+}
+
+div.field>input,
+div.field>textarea,
+div.field>select {
+    width: 100%;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: solid 1px #999;
+}
+
+div.field>textarea {
+    height: 180px;
+}
+
+div.field>button {
+    padding: 6px 8px;
+}
+
+
+img {
+    transition: 0.8s ;
+}
+
+img:hover{
+    opacity: 0.6;
+}

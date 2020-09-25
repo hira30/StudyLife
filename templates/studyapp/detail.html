@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block header %}
+<div class="jumbotron jumbotron-fluid jumbotron-extend">
+    <div class="container">
+        <h1 class="display-4">StudyLife</h1>
+        <p class="lead">学習記録の詳細</p>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+  <div class="alert alert-success" role="alert">
+    <p>日付：{{ object.date }}</p>
+    <p>学習時間：{{ object.time }}</p>
+    <p>学習内容：{{ object.task }}</p>
+    <p>メモ：{{ object.memo }}</p>
+  </div>
+  <a href="{% url 'studyapp:list' %}" class="btn btn-info" role="button" aria-disabled="true">戻る</a>
+</div>
+{% endblock content %}

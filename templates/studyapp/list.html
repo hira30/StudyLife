@@ -1,0 +1,86 @@
+{% extends 'main/base.html' %}
+
+
+{% block header %}
+<div class="jumbotron jumbotron-fluid jumbotron-extend">
+    <div class="container">
+        <h1 class="display-4">StudyLife</h1>
+        <p class="lead">{{ user|title }}さんのダッシュボード</p>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <canvas id="myChart" style="width: 100%; height:300px;"></canvas>
+    <script type="text/javascript">
+        var chartChart = document.getElementById("myChart");
+        new Chart(chartChart, {
+            type: 'bar',
+            data: {
+                labels: {{ labels|safe }},
+                datasets: [{
+                    label: '',
+                    data: {{ data_list|safe }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: '直近5日間の学習記録'
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            suggestedMax: 5,
+                        },
+                        gridLines: {
+                            offsetGridLines: true
+                        },
+                        // type: 'time',
+                        // time: {
+                        //     unit: 'day'
+                        // }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+    <br>
+    <a href="{% url 'studyapp:create' %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">学習を記録する</a><br><br>
+
+    <hr>
+    <h4>直近5日間の学習記録</h4>
+    {% for item in object_list %}
+    <div class="alert alert-{{ item.priority }}" role="alert">
+        <p>{{ item.date }}　 {{ item.get_task_display }}　学習時間：{{ item.time }}h</p>
+        <a href="{% url 'studyapp:update' item.pk %}" class="btn btn-outline-info" tabindex="-1" role="button" aria-disabled="true">編集</a>
+        <a href="{% url 'studyapp:detail' item.pk %}" class="btn btn-outline-success" tabindex="-1" role="button" aria-disabled="true">詳細</a>
+        <a href="{% url 'studyapp:delete' item.pk %}" class="btn btn-outline-danger" tabindex="-1" role="button" aria-disabled="true">削除</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

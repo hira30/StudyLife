@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block header %}
+<div class="jumbotron jumbotron-fluid jumbotron-extend">
+    <div class="container">
+        <h1 class="display-4">StudyLife</h1>
+        <p class="lead">学習を記録</p>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <div class="forms">
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <!-- for admin widgets -->
+            <!-- <link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}"/> -->
+            <link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}" />
+            <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+            {{ form.media }}
+            <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
+            <script type="text/javascript" src="{% static 'admin/js/admin/RelatedObjectLookups.js' %}"></script>
+            <!-- end for admin widgets -->
+
+            <div class="field">
+                {{ form.date.label_tag }}
+                {{ form.date }}
+                {{ form.date.errors }}
+            </div>
+            <div class="field">
+                {{ form.time.label_tag }}
+                {{ form.time }}
+                <span class="helptext">{{ form.time.help_text }}</span>
+                {{ form.time.errors }}
+            </div>
+            <div class="field">
+                {{ form.task.label_tag }}
+                {{ form.task }}
+                {{ form.task.errors }}
+            </div>
+            <div class="field">
+                {{ form.memo.label_tag }}
+                {{ form.memo }}
+                {{ form.memo.errors }}
+            </div>
+
+            <input type="submit" value="記録">
+        </form>
+        <p><a href="{% url 'studyapp:list' %}" class="btn btn-success" role="button" aria-disabled="true">戻る</a></p>
+    </div>
+</div>
+{% endblock content %}

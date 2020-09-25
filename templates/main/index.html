@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+
+{% block header %}
+<div class="jumbotron jumbotron-fluid jumbotron-extend">
+    <div class="container">
+        <h1 class="display-4">StudyLife</h1>
+        <p class="lead">毎日の学習を記録しましょう。</p>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+{% if request.user.is_authenticated %}
+    <h2>{{ user|title }}さん、ようこそ！</h2><br>
+    <p><a class="btn btn-info" href= "{% url 'studyapp:list' %}" role="button">ダッシュボード</a></p>
+{% else %}
+    <p>コンテンツを利用するにはユーザー登録が必要です。</p>
+    <p><a class="btn btn-info btn-lg" href="{% url 'main:signup' %}" role="button">ユーザー登録</a></p>
+    <p>既に会員の方は <a href= "{% url 'main:login' %}">ログイン</a></p>
+</div>
+{% endif %}
+{% endblock content %}
