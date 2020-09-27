@@ -23,4 +23,3 @@ URL:http://18.177.84.13/
 
 ## 作者情報
 - Twitterアカウント  https://twitter.com/hirahira8057
-- Qiita  https://qiita.com/hirahira08
