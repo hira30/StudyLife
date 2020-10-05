@@ -20,6 +20,3 @@ URL:http://18.177.84.13/
   - Amazon Linux 2(64bit)
   - Apache 2.4.46
   - MySQL 8.0.21
-
-## 作者情報
-- Twitterアカウント  https://twitter.com/hirahira8057
